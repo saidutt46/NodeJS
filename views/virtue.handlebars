@@ -1,0 +1,66 @@
+<h4 class="upp text-center">You Can Now Upload Your Project</h4>
+<h5 class="text-center">A max File Size of 100Mb is Aceepteable</h5>
+<br>
+<br>
+<div class="somex" style="text-align:center;background-color:#323232;padding:20px;">
+<input type="button" value="Upload Project" id="bone" onclick="upload()" />
+<input type="button" value="Add Project" id="btwo" onclick="add()" />
+</div>
+<script>
+  $(document).ready(function() {
+    $("#bone").click(function(){
+      $("#btwo").hide();
+      $("#switch").css("display","block");
+      $("#forone").css("display","block");
+    });
+  });
+  $(document).ready(function(){
+    $("#btwo").click(function(){
+      $("#bone").hide();
+      $("#switch").css("display","block");
+      $("#fortwo").css("display","block");
+    });
+  });
+</script>
+<br>
+<p id="switch" style="font-size:14px;display:none;">If you want to switch b/w Upload & Add Projects click Upload again</p>
+<form method="post" enctype="multipart/form-data" id="forone" style="background-color:lightgray;height:200px;padding:50px;display:none">
+  <input type="file" name="myFile" max="100000" accept=".rar, .tar, .jpg, .jpeg, .docx, .txt, .png, .xls, .html, .js" class="form-control" required /> <br>
+  <button id="but" type="submit" name="submit" class="form-control btn btn-primary">Upload
+  </button>
+</form>
+
+<br>
+{{#if errors}}
+      {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+      {{/each}}
+{{/if}}
+<form method="post" enctype="multipart/form-data" id="fortwo" style="padding:25px;display:none">
+  <div class="form-group">
+    <label>User Name</label>
+    <input type="text" class="form-control" name="name" placeholder="Enter Full Name" required />
+  </div>
+  <div class="form-group">
+    <label>Project Start Date</label>
+    <input type="text" id="done" class="form-control" name="startdate" placeholder="Pick Start Date" required />
+  </div>
+  <div class="form-group">
+    <label>Project End Date</label>
+    <input type="text" id="dtwo" class="form-control" name="enddate" placeholder="Pick End Date" required />
+  </div>
+  <div class="form-group">
+    <label>Project Description</label>
+    <input type="text" class="form-control" name="projectinfo" placeholder="Brief Description About Project" required />
+  </div>
+  <button type="submit" class="btn tbn-Primary">Submit</button>
+</form>
+<script>
+  $( function() {
+	$("#done").datepicker();
+  } );
+
+  $( function() {
+	$("#dtwo").datepicker();
+  } );
+</script>
